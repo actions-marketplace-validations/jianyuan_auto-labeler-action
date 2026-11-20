@@ -1,5 +1,5 @@
 {
-  "name": "Auto Labeler",
+  "name": "Conventional PR Labeler",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "postCreateCommand": "npm install",
   "customizations": {

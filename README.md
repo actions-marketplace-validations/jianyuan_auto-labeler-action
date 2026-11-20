@@ -1,4 +1,4 @@
-# Auto Labeler
+# Conventional PR Labeler
 
 Labels pull requests from a YAML config, like
 [actions/labeler](https://github.com/actions/labeler), but it can match on the

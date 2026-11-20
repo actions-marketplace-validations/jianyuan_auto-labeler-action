@@ -1,4 +1,4 @@
-name: Auto Labeler
+name: Conventional PR Labeler
 description:
   Label pull requests from their title, body, author, branches and changed files
 author: Jian Yuan Lee
