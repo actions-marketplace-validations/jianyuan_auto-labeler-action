@@ -1,0 +1,29 @@
+name: Auto Labeler
+description:
+  Label pull requests from their title, body, author, branches and changed files
+author: Jian Yuan Lee
+
+branding:
+  icon: tag
+  color: blue
+
+inputs:
+  repo-token:
+    description: Token used to read the config and label PRs
+    default: ${{ github.token }}
+  configuration-path:
+    description: Path to the label config in the repo
+    default: .github/auto-labeler.yml
+  sync-labels:
+    description: Remove configured labels that no longer match
+    default: 'true'
+
+outputs:
+  new-labels:
+    description: Comma-separated labels added to the triggering PR in this run
+  all-labels:
+    description: Comma-separated labels on the triggering PR after this run
+
+runs:
+  using: node24
+  main: dist/index.js

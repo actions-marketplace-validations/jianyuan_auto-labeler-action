@@ -1,0 +1,53 @@
+// See: https://eslint.org/docs/latest/use/configure/configuration-files
+
+import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
+import jest from 'eslint-plugin-jest'
+import prettier from 'eslint-plugin-prettier'
+import globals from 'globals'
+
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all
+})
+
+export default [
+  {
+    ignores: ['**/coverage', '**/dist', '**/linter', '**/node_modules']
+  },
+  ...compat.extends(
+    'eslint:recommended',
+    'plugin:jest/recommended',
+    'plugin:prettier/recommended'
+  ),
+  {
+    plugins: {
+      jest,
+      prettier
+    },
+
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...globals.jest,
+        Atomics: 'readonly',
+        SharedArrayBuffer: 'readonly'
+      },
+
+      ecmaVersion: 2023,
+      sourceType: 'module'
+    },
+
+    rules: {
+      camelcase: 'off',
+      'eslint-comments/no-use': 'off',
+      'eslint-comments/no-unused-disable': 'off',
+      'i18n-text/no-en': 'off',
+      'no-console': 'off',
+      'no-shadow': 'off',
+      'no-unused-vars': 'off',
+      'prettier/prettier': 'error'
+    }
+  }
+]
