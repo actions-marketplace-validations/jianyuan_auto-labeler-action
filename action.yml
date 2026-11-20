@@ -12,7 +12,8 @@ inputs:
     description: Token used to read the config and label PRs
     default: ${{ github.token }}
   configuration-path:
-    description: Path to the label config in the repo
+    description:
+      Path to the label config in the repo; labels the repo lacks are skipped
     default: .github/auto-labeler.yml
   sync-labels:
     description: Remove configured labels that no longer match

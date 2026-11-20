@@ -29,6 +29,9 @@ jobs:
       - uses: jianyuan/auto-labeler-action@v1
 ```
 
+Create the labels from your config in the repo before the first run; the action
+skips labels the repo doesn't have.
+
 The action reads its config through the API and never checks out PR code, so it
 is safe on `pull_request_target` and labels PRs from forks too.
 
@@ -38,11 +41,11 @@ notes will list.
 
 ## Inputs
 
-| Input                | Default                    | Description                                   |
-| -------------------- | -------------------------- | --------------------------------------------- |
-| `repo-token`         | `${{ github.token }}`      | Token used to read the config and label PRs   |
-| `configuration-path` | `.github/auto-labeler.yml` | Path to the label config in the repo          |
-| `sync-labels`        | `true`                     | Remove configured labels that no longer match |
+| Input                | Default                    | Description                                                             |
+| -------------------- | -------------------------- | ----------------------------------------------------------------------- |
+| `repo-token`         | `${{ github.token }}`      | Token used to read the config and label PRs                             |
+| `configuration-path` | `.github/auto-labeler.yml` | Path to the label config in the repo; labels the repo lacks are skipped |
+| `sync-labels`        | `true`                     | Remove configured labels that no longer match                           |
 
 ## Outputs
 
