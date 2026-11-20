@@ -1,7 +1,7 @@
 {
   "name": "auto-labeler-action",
   "description": "Label pull requests from their title, body, author, branches and changed files",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Jian Yuan Lee",
   "type": "module",
   "private": true,
