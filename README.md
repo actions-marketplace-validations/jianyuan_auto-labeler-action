@@ -29,8 +29,9 @@ jobs:
       - uses: jianyuan/auto-labeler-action@v1
 ```
 
-Create the labels from your config in the repo before the first run; the action
-skips labels the repo doesn't have.
+Create the labels from your config in the repo before the first run. The action
+skips labels the repo doesn't have, with a warning, so that GitHub doesn't
+create them with a default color.
 
 The action reads its config through the API and never checks out PR code, so it
 is safe on `pull_request_target` and labels PRs from forks too.
@@ -81,9 +82,8 @@ Every value can be a single string or a list. Globs use Node's
 `path.matchesGlob`, where `**` does not enter dot directories, so write
 `.github/**` explicitly.
 
-Labels the repo doesn't have are skipped with a warning, because GitHub would
-otherwise create them. With `sync-labels`, labels from the config that no longer
-match are removed when a PR is edited; other labels are left alone.
+With `sync-labels`, each run removes config labels that no longer match; labels
+not in the config are left alone.
 
 ```yaml
 breaking-change:
